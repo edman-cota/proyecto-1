@@ -1,0 +1,13 @@
+¿Cómo correr el proyecto localmente?
+
+Como primer paso necesitamos correr el backend y para hacerlo necesitamos estar seguros que estamos en el directorio actual de backend, luego corremos el siguente comando:
+
+```node
+node server.js
+```
+
+Luego accedemos al la ruta de frontend, para luego ahora correr el siguiente comando:
+
+```node
+npm run dev
+```
