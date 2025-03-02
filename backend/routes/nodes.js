@@ -2,12 +2,12 @@ const express = require('express');
 const {
   createNode,
   getNodes,
-  createProveedor,
   getProveedores,
   createSingleNode,
   getProductos,
   getOrdenes,
   getInventarios,
+  getTransportes,
 } = require('../controllers/nodesController'); // Verifica esta línea
 const router = express.Router();
 
@@ -25,5 +25,8 @@ router.get('/ordenes', getOrdenes);
 
 router.post('/inventario', createSingleNode);
 router.get('/inventarios', getInventarios);
+
+router.post('/transporte', createSingleNode);
+router.get('/transportes', getTransportes);
 
 module.exports = router;

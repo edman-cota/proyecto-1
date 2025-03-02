@@ -30,6 +30,10 @@ const Navigation = () => {
       <Link to='/inventarios' style={{ color: 'white' }}>
         Inventarios
       </Link>
+
+      <Link to='/transportes' style={{ color: 'white' }}>
+        Transportes
+      </Link>
     </nav>
   );
 };

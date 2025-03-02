@@ -55,3 +55,11 @@ Propiedades de los nodos:
 - capacidad: Capacidad del inventario (número entero)
 - fecha_vencimiento: Fecha de vencimiento de los productos (fecha)
 - productos: Lista de productos almacenados (listas de texto)
+
+5. Transporte (Transporte {id, tipo, capacidad, costo, activo})
+
+- id: Identificador único del transporte (número entero)
+- tipo: Tipo de transporte (texto, como 'camión', 'barco', etc.)
+- capacidad: Capacidad del transporte (número entero)
+- costo: Costo del transporte (número con punto flotante)
+- activo: Si el transporte está activo (booleano)

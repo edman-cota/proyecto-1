@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router';
 import Productos from '../components/Productos';
 import Ordenes from '../components/Ordenes';
 import Inventarios from '../components/Inventarios';
+import Transportes from '../components/Transportes';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='productos' element={<Productos />} />
         <Route path='ordenes' element={<Ordenes />} />
         <Route path='inventarios' element={<Inventarios />} />
+        <Route path='transportes' element={<Transportes />} />
       </Routes>
     </div>
   );

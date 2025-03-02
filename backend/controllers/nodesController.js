@@ -147,3 +147,25 @@ exports.getInventarios = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.getTransportes = async (req, res) => {
+  try {
+    const session = driver.session();
+    const result = await session.run('MATCH (t:Transporte) RETURN t');
+
+    const nodes = result.records.map((record) => {
+      const node = record.get('t').properties;
+
+      Object.keys(node).forEach((key) => {
+        node[key] = toInteger(node[key]);
+      });
+
+      return node;
+    });
+
+    await session.close();
+    res.json(nodes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
