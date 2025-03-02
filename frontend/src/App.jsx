@@ -1,11 +1,17 @@
 import './App.css';
-import NodeList from '../components/NodeList';
+import Navigation from '../components/Navigation';
+import Proveedores from '../components/Proveedores';
+import { Routes, Route } from 'react-router';
 
 function App() {
   return (
-    <>
-      <NodeList />
-    </>
+    <div className='main'>
+      <Navigation />
+
+      <Routes>
+        <Route path='proveedores' element={<Proveedores />} />
+      </Routes>
+    </div>
   );
 }
 

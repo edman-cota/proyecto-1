@@ -11,3 +11,22 @@ Luego accedemos al la ruta de frontend, para luego ahora correr el siguiente com
 ```node
 npm run dev
 ```
+
+MODELO DE NODOS
+
+- Proveedor: Representa a los proveedores que suministran productos.
+- Producto: Los productos que los proveedores venden.
+- Orden de Compra: Representa las órdenes de compra realizadas.
+- Inventario: Almacenes o ubicaciones de inventarios.
+- Transporte: Información sobre el transporte utilizado en la cadena de suministro.
+- Centro de Distribución: Centros donde se gestionan los productos.
+- Cliente: Los clientes que reciben productos.
+
+Propiedades de los nodos:
+
+1. Proveedor (Proveedor {id, nombre, ubicación, calificación, activo})
+   - id: Identificador único (número entero)
+   - nombre: Nombre del proveedor (texto)
+   - ubicación: Ubicación del proveedor (texto)
+   - calificación: Calificación de confiabilidad del proveedor (número con punto flotante)
+   - activo: Si el proveedor está activo o no (booleano)
