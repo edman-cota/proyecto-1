@@ -22,6 +22,22 @@ exports.createNode = async (req, res) => {
   }
 };
 
+exports.createSingleNode = async (req, res) => {
+  try {
+    const { label, properties } = req.body;
+    const keys = Object.keys(properties)
+      .map((k) => `${k}: $${k}`)
+      .join(', ');
+
+    const session = driver.session();
+    await session.run(`CREATE (n:${label} {${keys}})`, properties);
+    await session.close();
+    res.send('Nodo creado');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 exports.getNodes = async (req, res) => {
   try {
     const session = driver.session();
@@ -44,22 +60,6 @@ exports.getNodes = async (req, res) => {
   }
 };
 
-exports.createProveedor = async (req, res) => {
-  try {
-    const { label, properties } = req.body;
-    const keys = Object.keys(properties)
-      .map((k) => `${k}: $${k}`)
-      .join(', ');
-
-    const session = driver.session();
-    await session.run(`CREATE (n:${label} {${keys}})`, properties);
-    await session.close();
-    res.send('Nodo creado');
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 exports.getProveedores = async (req, res) => {
   try {
     const session = driver.session();
@@ -67,6 +67,50 @@ exports.getProveedores = async (req, res) => {
 
     const nodes = result.records.map((record) => {
       const node = record.get('p').properties;
+
+      Object.keys(node).forEach((key) => {
+        node[key] = toInteger(node[key]);
+      });
+
+      return node;
+    });
+
+    await session.close();
+    res.json(nodes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getProductos = async (req, res) => {
+  try {
+    const session = driver.session();
+    const result = await session.run('MATCH (p:Producto) RETURN p');
+
+    const nodes = result.records.map((record) => {
+      const node = record.get('p').properties;
+
+      Object.keys(node).forEach((key) => {
+        node[key] = toInteger(node[key]);
+      });
+
+      return node;
+    });
+
+    await session.close();
+    res.json(nodes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getOrdenes = async (req, res) => {
+  try {
+    const session = driver.session();
+    const result = await session.run('MATCH (o:Orden) RETURN o');
+
+    const nodes = result.records.map((record) => {
+      const node = record.get('o').properties;
 
       Object.keys(node).forEach((key) => {
         node[key] = toInteger(node[key]);

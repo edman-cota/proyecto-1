@@ -25,8 +25,25 @@ MODELO DE NODOS
 Propiedades de los nodos:
 
 1. Proveedor (Proveedor {id, nombre, ubicación, calificación, activo})
+
    - id: Identificador único (número entero)
    - nombre: Nombre del proveedor (texto)
    - ubicación: Ubicación del proveedor (texto)
    - calificación: Calificación de confiabilidad del proveedor (número con punto flotante)
    - activo: Si el proveedor está activo o no (booleano)
+
+2. Producto (Producto {id, nombre, categoría, precio, stock})
+
+- id: Identificador único del producto (número entero)
+- nombre: Nombre del producto (texto)
+- categoría: Categoría del producto (texto)
+- precio: Precio del producto (número con punto flotante)
+- stock: Stock disponible del producto (número entero)
+
+3. Orden de Compra (Orden {id, fecha, cantidad, estado, tipo_pago})
+
+- id: Identificador único de la orden (número entero)
+- fecha: Fecha de la orden (fecha)
+- cantidad: Cantidad de productos en la orden (número entero)
+- estado: Estado de la orden (texto, puede ser 'pendiente', 'procesada', etc.)
+- tipo_pago: Tipo de pago realizado (texto, puede ser 'tarjeta', 'efectivo', 'transferencia')

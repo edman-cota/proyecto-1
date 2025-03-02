@@ -9,10 +9,22 @@ const Navigation = () => {
         height: '100%',
         width: 240,
         color: '#FFFFFF',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10,
+        padding: 10,
       }}
     >
       <Link to='/proveedores' style={{ color: 'white' }}>
         Proveedores
+      </Link>
+
+      <Link to='/productos' style={{ color: 'white' }}>
+        Productos
+      </Link>
+
+      <Link to='/ordenes' style={{ color: 'white' }}>
+        Ordenes
       </Link>
     </nav>
   );

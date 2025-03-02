@@ -26,17 +26,7 @@ const Proveedores = () => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <h2>Proveedores</h2>
 
-        <button
-          style={{
-            height: 34,
-            width: 34,
-            backgroundColor: '#0073EA',
-            borderColor: 'transparent',
-            borderRadius: 4,
-            color: 'white',
-          }}
-          onClick={() => createSingleProveedor()}
-        >
+        <button className='addSingleNode' onClick={() => createSingleProveedor()}>
           +
         </button>
       </div>
