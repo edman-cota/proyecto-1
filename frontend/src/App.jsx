@@ -4,6 +4,7 @@ import Proveedores from '../components/Proveedores';
 import { Routes, Route } from 'react-router';
 import Productos from '../components/Productos';
 import Ordenes from '../components/Ordenes';
+import Inventarios from '../components/Inventarios';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='proveedores' element={<Proveedores />} />
         <Route path='productos' element={<Productos />} />
         <Route path='ordenes' element={<Ordenes />} />
+        <Route path='inventarios' element={<Inventarios />} />
       </Routes>
     </div>
   );

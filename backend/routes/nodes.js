@@ -7,6 +7,7 @@ const {
   createSingleNode,
   getProductos,
   getOrdenes,
+  getInventarios,
 } = require('../controllers/nodesController'); // Verifica esta línea
 const router = express.Router();
 
@@ -21,5 +22,8 @@ router.get('/productos', getProductos);
 
 router.post('/orden', createSingleNode);
 router.get('/ordenes', getOrdenes);
+
+router.post('/inventario', createSingleNode);
+router.get('/inventarios', getInventarios);
 
 module.exports = router;

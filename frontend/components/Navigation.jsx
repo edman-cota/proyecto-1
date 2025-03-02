@@ -26,6 +26,10 @@ const Navigation = () => {
       <Link to='/ordenes' style={{ color: 'white' }}>
         Ordenes
       </Link>
+
+      <Link to='/inventarios' style={{ color: 'white' }}>
+        Inventarios
+      </Link>
     </nav>
   );
 };

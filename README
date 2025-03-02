@@ -47,3 +47,11 @@ Propiedades de los nodos:
 - cantidad: Cantidad de productos en la orden (número entero)
 - estado: Estado de la orden (texto, puede ser 'pendiente', 'procesada', etc.)
 - tipo_pago: Tipo de pago realizado (texto, puede ser 'tarjeta', 'efectivo', 'transferencia')
+
+4. Inventario (Inventario {id, ubicación, capacidad, fecha_vencimiento, productos})
+
+- id: Identificador único del inventario (número entero)
+- ubicación: Ubicación del inventario (texto)
+- capacidad: Capacidad del inventario (número entero)
+- fecha_vencimiento: Fecha de vencimiento de los productos (fecha)
+- productos: Lista de productos almacenados (listas de texto)
