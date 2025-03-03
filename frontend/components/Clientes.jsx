@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
-import ProveedoresModal from './Modals/ProveedoresModal';
 import { MdDelete } from 'react-icons/md';
+import ClientesModal from './Modals/ClientesModal';
 
 const Clientes = () => {
   const [nodes, setNodes] = useState([]);
@@ -25,7 +25,7 @@ const Clientes = () => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <h2>Clientes</h2>
 
-        <ProveedoresModal fetchProveedores={fetchData} />
+        <ClientesModal fetchProveedores={fetchData} />
       </div>
 
       <table>
@@ -34,9 +34,9 @@ const Clientes = () => {
             <th>Id</th>
             <th>Nombre</th>
             <th>Ubicación</th>
-            <th>Capacidad producción</th>
-            <th>Tiempo de entrega</th>
-            <th>Confiabilidad</th>
+            <th>Demanda mensual</th>
+            <th>Frecuencia de pedidos</th>
+            <th>Nivel de prioridad</th>
             <th>Estado</th>
             <th>Eliminar</th>
           </tr>
@@ -47,9 +47,9 @@ const Clientes = () => {
               <td>{node.id}</td>
               <td>{node.nombre}</td>
               <td>{node.ubicacion}</td>
-              <td>{node.capacidad_produccion}</td>
-              <td>{node.tiempo_entrega}</td>
-              <td>{node.confiabilidad}</td>
+              <td>{node.demanda_mensual}</td>
+              <td>{node.frecuencia_pedidos}</td>
+              <td>{node.nivel_prioridad}</td>
               <td>{node.activo ? 'Activo' : 'Inactivo'}</td>
 
               <td>
