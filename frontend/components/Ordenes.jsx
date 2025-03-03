@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import OrdenesModal from './Modals/OrdenesModal';
+import { MdDelete } from 'react-icons/md';
 
 const Ordenes = () => {
   const [nodes, setNodes] = useState([]);
@@ -12,11 +14,8 @@ const Ordenes = () => {
     fetchOrdenes();
   }, []);
 
-  const createSingleOrden = async () => {
-    const label = 'Orden';
-    const properties = { estado: 'pendiente', cantidad: 4, tipo_pago: 'tarjeta', fecha: new Date() };
-
-    await api.post('/nodos/orden', { label, properties });
+  const deleteOrden = async (id) => {
+    await api.delete(`/nodos/orden/${id}`);
 
     fetchOrdenes();
   };
@@ -26,9 +25,7 @@ const Ordenes = () => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <h2>Ordenes</h2>
 
-        <button className='addSingleNode' onClick={() => createSingleOrden()}>
-          +
-        </button>
+        <OrdenesModal fetchProveedores={fetchOrdenes} />
       </div>
 
       <table>
@@ -39,6 +36,7 @@ const Ordenes = () => {
             <th>Cantidad productos</th>
             <th>Tipo de pago</th>
             <th>Fecha</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +48,11 @@ const Ordenes = () => {
               <td>{node.tipo_pago}</td>
               {/* <td>{new Date(node.fecha)}</td> */}
               <td></td>
+              <td>
+                <button title='Eliminar' className='deleteButton' onClick={() => deleteOrden(node.id)}>
+                  <MdDelete />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

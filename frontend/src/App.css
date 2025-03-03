@@ -20,11 +20,80 @@ table tbody tr td {
   padding: 2px 6px;
 }
 
-.addSingleNode {
+nav {
+  display: flex;
+  width: 240px;
+  height: 100%;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  color: white;
+  background-color: #0f1324;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+input {
+  padding: 4px 10px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.crear {
+  height: 34px;
+  width: 100px;
+  background-color: #0073ea;
+  border-color: transparent;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: red;
+  fill: white;
+  color: white;
+  border-color: transparent;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.DialogOverlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.DialogTrigger {
   height: 34px;
   width: 34px;
   background-color: #0073ea;
   border-color: transparent;
   border-radius: 4px;
   color: white;
+  cursor: pointer;
+}
+
+.DialogContent {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: var(--shadow-6);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 500px;
+  max-height: 85vh;
+  padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.DialogContent:focus {
+  outline: none;
 }

@@ -82,6 +82,20 @@ exports.getProveedores = async (req, res) => {
   }
 };
 
+exports.deleteProveedor = async (req, res) => {
+  const { id } = req.params; // Obtiene el ID del nodo de la URL
+  const session = driver.session();
+
+  try {
+    await session.run('MATCH (n:Proveedor {id: $id}) DELETE n', { id: parseInt(id) });
+    res.json({ message: 'Nodo eliminado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
+  }
+};
+
 exports.getProductos = async (req, res) => {
   try {
     const session = driver.session();
@@ -101,6 +115,20 @@ exports.getProductos = async (req, res) => {
     res.json(nodes);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+};
+
+exports.deleteProducto = async (req, res) => {
+  const { id } = req.params; // Obtiene el ID del nodo de la URL
+  const session = driver.session();
+
+  try {
+    await session.run('MATCH (n:Producto {id: $id}) DELETE n', { id: parseInt(id) });
+    res.json({ message: 'Nodo eliminado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
   }
 };
 
@@ -126,6 +154,20 @@ exports.getOrdenes = async (req, res) => {
   }
 };
 
+exports.deleteOrden = async (req, res) => {
+  const { id } = req.params; // Obtiene el ID del nodo de la URL
+  const session = driver.session();
+
+  try {
+    await session.run('MATCH (n:Orden {id: $id}) DELETE n', { id: parseInt(id) });
+    res.json({ message: 'Nodo eliminado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
+  }
+};
+
 exports.getInventarios = async (req, res) => {
   try {
     const session = driver.session();
@@ -148,6 +190,20 @@ exports.getInventarios = async (req, res) => {
   }
 };
 
+exports.deleteInventario = async (req, res) => {
+  const { id } = req.params; // Obtiene el ID del nodo de la URL
+  const session = driver.session();
+
+  try {
+    await session.run('MATCH (n:Inventario {id: $id}) DELETE n', { id: parseInt(id) });
+    res.json({ message: 'Nodo eliminado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
+  }
+};
+
 exports.getTransportes = async (req, res) => {
   try {
     const session = driver.session();
@@ -167,5 +223,19 @@ exports.getTransportes = async (req, res) => {
     res.json(nodes);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+};
+
+exports.deleteTransporte = async (req, res) => {
+  const { id } = req.params; // Obtiene el ID del nodo de la URL
+  const session = driver.session();
+
+  try {
+    await session.run('MATCH (n:Transporte {id: $id}) DELETE n', { id: parseInt(id) });
+    res.json({ message: 'Nodo eliminado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
   }
 };
