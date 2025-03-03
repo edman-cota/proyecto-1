@@ -7,7 +7,9 @@ const ProveedoresModal = ({ fetchProveedores }) => {
 
   const [nombre, setNombre] = useState('');
   const [ubicacion, setUnbicacion] = useState('');
-  const [calificacion, setCalificacion] = useState(0);
+  const [capacidad, setCapacidad] = useState(1000);
+  const [tiempoEntrega, setTiempoEntrega] = useState(3);
+  const [confiabilidad, setConfiabilidad] = useState(1);
 
   const createSingleProveedor = async () => {
     const label = 'Proveedor';
@@ -15,9 +17,11 @@ const ProveedoresModal = ({ fetchProveedores }) => {
 
     const properties = {
       id,
-      nombre: nombre,
-      ubicación: ubicacion,
-      calificación: +calificacion,
+      nombre,
+      ubicacion: ubicacion,
+      capacidad_produccion: capacidad,
+      tiempo_entrega: tiempoEntrega,
+      confiabilidad: confiabilidad,
       activo: true,
     };
 
@@ -50,8 +54,27 @@ const ProveedoresModal = ({ fetchProveedores }) => {
             </div>
 
             <div style={{ display: 'flex' }}>
-              <label style={{ width: 200 }}>Calificación</label>
-              <input placeholder='Calificación' onChange={(event) => setCalificacion(event.target.value)} />
+              <label style={{ width: 200 }}>Producción máxima (unidades/mes)</label>
+              <input
+                placeholder='Producción máxima (unidades/mes)'
+                onChange={(event) => setCapacidad(event.target.value)}
+              />
+            </div>
+
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Tiempo estimado de entrega (días)</label>
+              <input
+                placeholder='Tiempo estimado de entrega (días)'
+                onChange={(event) => setTiempoEntrega(event.target.value)}
+              />
+            </div>
+
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Nivel de confianza en la entrega (0-1)</label>
+              <input
+                placeholder='Nivel de confianza en la entrega (0-1)'
+                onChange={(event) => setConfiabilidad(event.target.value)}
+              />
             </div>
           </div>
 

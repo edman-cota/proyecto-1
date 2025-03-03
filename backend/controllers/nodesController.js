@@ -96,6 +96,42 @@ exports.deleteProveedor = async (req, res) => {
   }
 };
 
+exports.getAlmacenes = async (req, res) => {
+  try {
+    const session = driver.session();
+    const result = await session.run('MATCH (p:Almacen) RETURN p');
+
+    const nodes = result.records.map((record) => {
+      const node = record.get('p').properties;
+
+      Object.keys(node).forEach((key) => {
+        node[key] = toInteger(node[key]);
+      });
+
+      return node;
+    });
+
+    await session.close();
+    res.json(nodes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.deleteAlmacen = async (req, res) => {
+  const { id } = req.params; // Obtiene el ID del nodo de la URL
+  const session = driver.session();
+
+  try {
+    await session.run('MATCH (n:Almacen {id: $id}) DELETE n', { id: parseInt(id) });
+    res.json({ message: 'Nodo eliminado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
+  }
+};
+
 exports.getProductos = async (req, res) => {
   try {
     const session = driver.session();

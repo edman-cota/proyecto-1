@@ -26,11 +26,13 @@ Propiedades de los nodos:
 
 1. Proveedor (Proveedor {id, nombre, ubicación, calificación, activo})
 
-   - id: Identificador único (número entero)
-   - nombre: Nombre del proveedor (texto)
-   - ubicación: Ubicación del proveedor (texto)
-   - calificación: Calificación de confiabilidad del proveedor (número con punto flotante)
-   - activo: Si el proveedor está activo o no (booleano)
+- id: Identificador único.
+- nombre: Nombre del proveedor.
+- ubicacion: Ubicación del proveedor.
+- capacidad_produccion: Producción máxima (unidades/mes).
+- tiempo_entrega: Tiempo estimado de entrega (días).
+- confiabilidad: Nivel de confianza en la entrega (0-1).
+- activo: Si el proveedor está activo o no (booleano)
 
 2. Producto (Producto {id, nombre, categoría, precio, stock})
 
@@ -63,3 +65,22 @@ Propiedades de los nodos:
 - capacidad: Capacidad del transporte (número entero)
 - costo: Costo del transporte (número con punto flotante)
 - activo: Si el transporte está activo (booleano)
+
+6. Almacen: Representa un centro de distribución donde se almacenan productos
+
+- id: Identificador único.
+- nombre: Nombre del almacén.
+- capacidad: Capacidad máxima (unidades).
+- temperatura_controlada: Indica si tiene control de temperatura (true o false).
+- ubicacion: Ubicación del almacén.
+- inventario_actual: Cantidad de productos disponibles.
+
+7. Cliente: Representa un punto de entrega, como una tienda o consumidor final.
+
+- id: Identificador único.
+- nombre: Nombre del cliente.
+- ubicacion: Dirección del cliente.
+- demanda_mensual: Cantidad de productos solicitados al mes.
+- frecuencia_pedidos: "Diaria", "Semanal" o "Mensual".
+- nivel_prioridad: "Alta", "Media" o "Baja".
+- tipo_cliente: "Tienda" o "Consumidor Final".

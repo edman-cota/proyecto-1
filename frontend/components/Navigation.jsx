@@ -6,6 +6,14 @@ const Navigation = () => {
         Proveedores
       </Link>
 
+      <Link to='/almacenes' style={{ color: 'white' }}>
+        Almacenes
+      </Link>
+
+      <Link to='/clientes' style={{ color: 'white' }}>
+        Clientes
+      </Link>
+
       <Link to='/productos' style={{ color: 'white' }}>
         Productos
       </Link>

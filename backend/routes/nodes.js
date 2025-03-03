@@ -13,6 +13,8 @@ const {
   deleteOrden,
   deleteInventario,
   deleteTransporte,
+  getAlmacenes,
+  deleteAlmacen,
 } = require('../controllers/nodesController'); // Verifica esta línea
 const router = express.Router();
 
@@ -22,6 +24,10 @@ router.get('/', getNodes);
 router.post('/proveedor', createSingleNode);
 router.get('/proveedores', getProveedores);
 router.delete('/proveedor/:id', deleteProveedor);
+
+router.post('/almacen', createSingleNode);
+router.get('/almacenes', getAlmacenes);
+router.delete('/almacen/:id', deleteAlmacen);
 
 router.post('/producto', createSingleNode);
 router.get('/productos', getProductos);

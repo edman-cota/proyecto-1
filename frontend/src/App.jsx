@@ -6,6 +6,8 @@ import Productos from '../components/Productos';
 import Ordenes from '../components/Ordenes';
 import Inventarios from '../components/Inventarios';
 import Transportes from '../components/Transportes';
+import Almacenes from '../components/Almancenes';
+import Clientes from '../components/Clientes';
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
 
       <Routes>
         <Route path='proveedores' element={<Proveedores />} />
+        <Route path='almacenes' element={<Almacenes />} />
+        <Route path='clientes' element={<Clientes />} />
+
         <Route path='productos' element={<Productos />} />
         <Route path='ordenes' element={<Ordenes />} />
         <Route path='inventarios' element={<Inventarios />} />

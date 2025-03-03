@@ -3,29 +3,29 @@ import api from '../services/api';
 import ProveedoresModal from './Modals/ProveedoresModal';
 import { MdDelete } from 'react-icons/md';
 
-const Proveedores = () => {
+const Clientes = () => {
   const [nodes, setNodes] = useState([]);
 
-  const fetchProveedores = () => {
-    api.get('/nodos/proveedores').then((res) => setNodes(res.data));
+  const fetchData = () => {
+    api.get('/nodos/clientes').then((res) => setNodes(res.data));
   };
 
-  const deleteProveedor = async (id) => {
-    await api.delete(`/nodos/proveedor/${id}`);
+  const deleteNode = async (id) => {
+    await api.delete(`/nodos/cliente/${id}`);
 
-    fetchProveedores();
+    fetchData();
   };
 
   useEffect(() => {
-    fetchProveedores();
+    fetchData();
   }, []);
 
   return (
     <main style={{ width: '100%', marginTop: 40, padding: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <h2>Proveedores</h2>
+        <h2>Clientes</h2>
 
-        <ProveedoresModal fetchProveedores={fetchProveedores} />
+        <ProveedoresModal fetchProveedores={fetchData} />
       </div>
 
       <table>
@@ -53,7 +53,7 @@ const Proveedores = () => {
               <td>{node.activo ? 'Activo' : 'Inactivo'}</td>
 
               <td>
-                <button title='Eliminar' className='deleteButton' onClick={() => deleteProveedor(node.id)}>
+                <button title='Eliminar' className='deleteButton' onClick={() => deleteNode(node.id)}>
                   <MdDelete />
                 </button>
               </td>
@@ -65,4 +65,4 @@ const Proveedores = () => {
   );
 };
 
-export default Proveedores;
+export default Clientes;

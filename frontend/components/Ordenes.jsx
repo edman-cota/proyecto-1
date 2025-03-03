@@ -40,8 +40,8 @@ const Ordenes = () => {
           </tr>
         </thead>
         <tbody>
-          {nodes.map((node) => (
-            <tr>
+          {nodes.map((node, index) => (
+            <tr key={index}>
               <td>{node.id}</td>
               <td>{node.estado}</td>
               <td>{node.cantidad}</td>
