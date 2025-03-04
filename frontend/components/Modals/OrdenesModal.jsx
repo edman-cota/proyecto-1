@@ -6,7 +6,11 @@ const OrdenesModal = ({ fetchProveedores }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [cantidad, setCantidad] = useState('');
-  const [pago, setPago] = useState('credito');
+  const [pago, setPago] = useState('Tarjeta');
+  const [estado, setEstado] = useState('Entregada');
+
+  const pagos = ['Tarjeta', 'Efectivo', 'Transferencia'];
+  const estados = ['Pendiente', 'Procesada', 'Entregada'];
 
   const createSingleOrden = async () => {
     const label = 'Orden';
@@ -14,7 +18,8 @@ const OrdenesModal = ({ fetchProveedores }) => {
 
     const properties = {
       id,
-      estado: 'pendiente',
+      nombre: id,
+      estado: 'Entregada',
       cantidad,
       tipo_pago: pago,
       fecha: new Date(),
@@ -47,16 +52,29 @@ const OrdenesModal = ({ fetchProveedores }) => {
               <label style={{ width: 200 }}>Tipo de pago</label>
 
               <select name='pagos' id='pagos' onChange={(event) => setPago(event.target.value)}>
-                <option value='credito'>Tarjeta de crédito</option>
-                <option value='debito'>Tarjeta de débito</option>
-                <option value='efectivo'>Efectivo</option>
-                <option value='transferencia'>Transferencia</option>
+                {pagos.map((item) => (
+                  <option value={item}>{item}</option>
+                ))}
+              </select>
+            </div>
+
+            <div style={{ display: 'flex', marginTop: 10 }}>
+              <label style={{ width: 200 }}>Estado de la orden</label>
+              <select value={estado} onChange={(e) => setEstado(e.target.value)}>
+                {estados.map((item) => (
+                  <option value={item}>{item}</option>
+                ))}
               </select>
             </div>
           </div>
 
           <div
-            style={{ display: 'flex', width: '100%', justifyContent: 'flex-end', marginTop: 30 }}
+            style={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'flex-end',
+              marginTop: 30,
+            }}
             onClick={() => createSingleOrden()}
           >
             <button className='crear'>Crear</button>

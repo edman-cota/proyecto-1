@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
-import ProveedoresModal from './Modals/ProveedoresModal';
 import { MdDelete } from 'react-icons/md';
 import AlmacenesModal from './Modals/AlmacenesModal';
 

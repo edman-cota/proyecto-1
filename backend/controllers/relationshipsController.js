@@ -36,11 +36,19 @@ exports.createRelationship = async (req, res) => {
 exports.getRelationships = async (req, res) => {
   const session = driver.session();
   try {
-    const result = await session.run('MATCH ()-[r]->() RETURN TYPE(r) AS type, properties(r) AS properties');
+    const result = await session.run(`
+      MATCH (start)-[r]->(end) 
+      RETURN TYPE(r) AS type, 
+             properties(r) AS properties, 
+             startNode(r).nombre AS startName, 
+             endNode(r).nombre AS endName
+    `);
 
     const relationships = result.records.map((record) => ({
-      ...record.get('properties'), // Extrae todas las propiedades de la relación
-      type: record.get('type'), // Agrega el tipo de la relación en el mismo objeto
+      ...record.get('properties'),
+      type: record.get('type'),
+      startName: record.get('startName'), // Nombre del nodo de inicio
+      endName: record.get('endName'), // Nombre del nodo final
     }));
 
     res.json(relationships);

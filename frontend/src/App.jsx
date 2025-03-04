@@ -9,6 +9,9 @@ import Transportes from '../components/Transportes';
 import Almacenes from '../components/Almancenes';
 import Clientes from '../components/Clientes';
 import Relaciones from '../components/Relaciones';
+import CONDUCE_A from '../components/CONDUCE_A';
+import SUMINISTRA from '../components/SUMINISTRA';
+import REALIZA from '../components/REALIZA';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         <Route path='transportes' element={<Transportes />} />
 
         <Route path='relaciones' element={<Relaciones />} />
+        <Route path='CONDUCE_A' element={<CONDUCE_A />} />
+        <Route path='SUMINISTRA' element={<SUMINISTRA />} />
+        <Route path='REALIZA' element={<REALIZA />} />
       </Routes>
     </div>
   );

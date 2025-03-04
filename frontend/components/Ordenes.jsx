@@ -21,42 +21,46 @@ const Ordenes = () => {
   };
 
   return (
-    <main style={{ width: '100%', marginTop: 40, padding: 16 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <main>
+      <div className='navbar'></div>
+
+      <div className='header'>
         <h2>Ordenes</h2>
 
         <OrdenesModal fetchProveedores={fetchOrdenes} />
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Estado</th>
-            <th>Cantidad productos</th>
-            <th>Tipo de pago</th>
-            <th>Fecha</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {nodes.map((node, index) => (
-            <tr key={index}>
-              <td>{node.id}</td>
-              <td>{node.estado}</td>
-              <td>{node.cantidad}</td>
-              <td>{node.tipo_pago}</td>
-              {/* <td>{new Date(node.fecha)}</td> */}
-              <td></td>
-              <td>
-                <button title='Eliminar' className='deleteButton' onClick={() => deleteOrden(node.id)}>
-                  <MdDelete />
-                </button>
-              </td>
+      <div className='card'>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Estado</th>
+              <th>Cantidad productos</th>
+              <th>Tipo de pago</th>
+              <th>Fecha</th>
+              <th>Eliminar</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {nodes.map((node, index) => (
+              <tr key={index}>
+                <td>{node.id}</td>
+                <td>{node.estado}</td>
+                <td>{node.cantidad}</td>
+                <td>{node.tipo_pago}</td>
+                {/* <td>{new Date(node.fecha)}</td> */}
+                <td></td>
+                <td>
+                  <button title='Eliminar' className='deleteButton' onClick={() => deleteOrden(node.id)}>
+                    <MdDelete />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </main>
   );
 };

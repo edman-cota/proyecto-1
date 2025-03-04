@@ -45,6 +45,7 @@ Propiedades de los nodos:
 3. Orden de Compra (Orden {id, fecha, cantidad, estado, tipo_pago})
 
 - id: Identificador único de la orden (número entero)
+- nombre: es igual al id del nodo.
 - fecha: Fecha de la orden (fecha)
 - cantidad: Cantidad de productos en la orden (número entero)
 - estado: Estado de la orden (texto, puede ser 'pendiente', 'procesada', etc.)

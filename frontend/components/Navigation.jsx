@@ -46,6 +46,21 @@ const Navigation = () => {
       <Link to='/relaciones' style={{ color: 'white' }}>
         Crear nueva relacion
       </Link>
+
+      <Link to='/CONDUCE_A' style={{ color: 'white' }}>
+        <FaStore />
+        CONDUCE_A
+      </Link>
+
+      <Link to='/SUMINISTRA' style={{ color: 'white' }}>
+        <FaStore />
+        SUMINISTRA
+      </Link>
+
+      <Link to='/REALIZA' style={{ color: 'white' }}>
+        <FaStore />
+        REALIZA
+      </Link>
     </nav>
   );
 };

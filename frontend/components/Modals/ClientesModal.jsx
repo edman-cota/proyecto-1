@@ -44,50 +44,56 @@ const ClientesModal = ({ fetchProveedores }) => {
         <Dialog.Content className='DialogContent'>
           <Dialog.Title className='DialogTitle'>Crear nuevo cliente</Dialog.Title>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 40 }}>
-            <div style={{ display: 'flex' }}>
-              <label style={{ width: 200 }}>Nombre</label>
-              <input placeholder='Nombre' onChange={(event) => setNombre(event.target.value)} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 40 }}>
+              <div style={{ display: 'flex' }}>
+                <label style={{ width: 200 }}>Nombre</label>
+                <input placeholder='Nombre' onChange={(event) => setNombre(event.target.value)} />
+              </div>
             </div>
-          </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Ubicación</label>
-            <input placeholder='Ubicación' onChange={(event) => setUnbicacion(event.target.value)} />
-          </div>
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Ubicación</label>
+              <input placeholder='Ubicación' onChange={(event) => setUnbicacion(event.target.value)} />
+            </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Demanda mensual</label>
-            <input placeholder='Demanda mensual' onChange={(event) => setDemanda(event.target.value)} />
-          </div>
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Demanda mensual</label>
+              <input placeholder='Demanda mensual' onChange={(event) => setDemanda(event.target.value)} />
+            </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Frecuencia de pedidos</label>
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Frecuencia de pedidos</label>
 
-            <select name='frecuencia' id='frecuencia' onChange={(event) => setFrecuencia(event.target.value)}>
-              <option value='Diaria'>Diaria</option>
-              <option value='Semanal'>Semanal</option>
-              <option value='Mensual'>Mensual</option>
-            </select>
-          </div>
+              <select
+                name='frecuencia'
+                id='frecuencia'
+                onChange={(event) => setFrecuencia(event.target.value)}
+              >
+                <option value='Diaria'>Diaria</option>
+                <option value='Semanal'>Semanal</option>
+                <option value='Mensual'>Mensual</option>
+              </select>
+            </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Nivel de prioridad</label>
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Nivel de prioridad</label>
 
-            <select name='prioridad' id='prioridad' onChange={(event) => setPrioridad(event.target.value)}>
-              <option value='Alta'>Alta</option>
-              <option value='Media'>Media</option>
-              <option value='Baja'>Baja</option>
-            </select>
-          </div>
+              <select name='prioridad' id='prioridad' onChange={(event) => setPrioridad(event.target.value)}>
+                <option value='Alta'>Alta</option>
+                <option value='Media'>Media</option>
+                <option value='Baja'>Baja</option>
+              </select>
+            </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Tipo de cliente</label>
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Tipo de cliente</label>
 
-            <select name='clientes' id='clientes' onChange={(event) => setTipo(event.target.value)}>
-              <option value='Tienda'>Tienda</option>
-              <option value='Consumidor Final'>Consumidor Final</option>
-            </select>
+              <select name='clientes' id='clientes' onChange={(event) => setTipo(event.target.value)}>
+                <option value='Tienda'>Tienda</option>
+                <option value='Consumidor Final'>Consumidor Final</option>
+              </select>
+            </div>
           </div>
 
           <div
