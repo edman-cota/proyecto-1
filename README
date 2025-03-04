@@ -167,3 +167,7 @@ RELACIONES
 - tiempo_entrega: Horas estimadas.
 - costo_total: Costo del servicio.
 - estado: "En ruta", "Entregado", "Retrasado".
+
+
+
+Ejemplo de diagrama 
