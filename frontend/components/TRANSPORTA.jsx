@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
-import REALIZAModal from './Modals/REALZAModal';
+import TRANSPORTAModal from './Modals/TRANSPORTAModal';
 
-const REALIZA = () => {
+const TRANSPORTA = () => {
   const [nodes, setNodes] = useState([]);
 
   const fetchData = () => {
-    api.get('/relaciones').then((res) => setNodes(res.data.filter((item) => item.type === 'REALIZA')));
+    api.get('/relaciones').then((res) => setNodes(res.data.filter((item) => item.type === 'TRANSPORTA')));
   };
 
   useEffect(() => {
@@ -18,9 +18,9 @@ const REALIZA = () => {
       <div className='navbar'></div>
 
       <div className='header'>
-        <h2>REALIZA</h2>
+        <h2>TRANSPORTA</h2>
 
-        <REALIZAModal fetchData={fetchData} />
+        <TRANSPORTAModal fetchData={fetchData} />
       </div>
 
       <div className='card'>
@@ -28,11 +28,10 @@ const REALIZA = () => {
           <thead>
             <tr>
               <th>Relación</th>
-              <th>Cliente</th>
+              <th>Transporte</th>
               <th>Orden</th>
-              <th>Estado</th>
-              <th>Metodo de pago</th>
-              <th>Urgente</th>
+              <th>Tipo de ruta</th>
+              <th>Costo total del servicio</th>
             </tr>
           </thead>
           <tbody>
@@ -41,9 +40,8 @@ const REALIZA = () => {
                 <td>{node.type}</td>
                 <td>{node.startName}</td>
                 <td>{node.endName}</td>
-                <td>{node.estado}</td>
-                <td>{node.metodo_pago}</td>
-                <td>{node.urgente ? 'Si' : 'No'}</td>
+                <td>{node.tipo_ruta}</td>
+                <td>{node.costo_transporte}</td>
               </tr>
             ))}
           </tbody>
@@ -53,4 +51,4 @@ const REALIZA = () => {
   );
 };
 
-export default REALIZA;
+export default TRANSPORTA;

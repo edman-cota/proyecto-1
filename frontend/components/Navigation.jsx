@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { FaStore } from 'react-icons/fa';
+import { FiLink } from 'react-icons/fi';
 
 const Navigation = () => {
   return (
@@ -31,11 +32,6 @@ const Navigation = () => {
         Ordenes
       </Link>
 
-      <Link to='/inventarios' style={{ color: 'white' }}>
-        <FaStore />
-        Inventarios
-      </Link>
-
       <Link to='/transportes' style={{ color: 'white' }}>
         <FaStore />
         Transportes
@@ -48,18 +44,28 @@ const Navigation = () => {
       </Link>
 
       <Link to='/CONDUCE_A' style={{ color: 'white' }}>
-        <FaStore />
+        <FiLink />
         CONDUCE_A
       </Link>
 
       <Link to='/SUMINISTRA' style={{ color: 'white' }}>
-        <FaStore />
+        <FiLink />
         SUMINISTRA
       </Link>
 
       <Link to='/REALIZA' style={{ color: 'white' }}>
-        <FaStore />
+        <FiLink />
         REALIZA
+      </Link>
+
+      <Link to='/ALMACENA' style={{ color: 'white' }}>
+        <FiLink />
+        ALMACENA
+      </Link>
+
+      <Link to='/TRANSPORTA' style={{ color: 'white' }}>
+        <FiLink />
+        TRANSPORTA
       </Link>
     </nav>
   );
