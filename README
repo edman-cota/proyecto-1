@@ -88,10 +88,82 @@ Propiedades de los nodos:
 
 RELACIONES
 
-1. CONDUCE_A
+1. CONDUCE_A: Proveedor -> Almacén
 
 - distancia: La distancia en kilómetros entre los nodos.
 - costo: El costo de transporte entre los nodos.
 - tiempo_transito: El tiempo estimado en horas del traslado.
 - capacidad_maxima: La cantidad máxima de carga en kg que puede llevarse en el trayecto.
 - modo_transporte: Tipo de transporte utilizado (Ej: "Camión", "Barco", "Avión").
+
+2. SUMINISTRA (Proveedor → Producto)
+
+- cantidad_minima: Cantidad mínima de compra.
+- precio_unitario: Precio por unidad.
+- frecuencia_entrega: "Diaria", "Semanal", "Mensual".
+- descuento: Descuento por volumen.
+- tiempo_entrega: Días estimados para la entrega.
+
+3.  REALIZA (Cliente → Orden)
+
+- fecha_orden: Fecha en que se realizó la orden.
+- cantidad_total: Total de productos en la orden.
+- metodo_pago: "Tarjeta", "Efectivo", "Transferencia".
+- estado: "Pendiente", "Procesada", "Entregada".
+- urgente: true o false (si es una orden prioritaria).
+
+4. ALMACENA (Almacen → Producto)
+
+- capacidad_disponible: Espacio restante en unidades.
+- fecha_ingreso: Fecha en que los productos llegaron.
+- temperatura_requerida: Temperatura de almacenamiento.
+- costo_mantenimiento: Costo mensual de almacenamiento.
+- dias_permitidos: Tiempo máximo de almacenamiento antes de vencimiento.
+
+5. TRANSPORTA (Transporte → Orden)
+
+- carga_utilizada: Espacio ocupado en el transporte.
+- tiempo_est_mins: Duración del transporte en minutos.
+- tipo_ruta: "Terrestre", "Marítima", "Aérea".
+- costo_transporte: Costo total del servicio.
+- seguro: true o false (si tiene seguro).
+
+6. DISTRIBUYE_A (Almacen → Cliente)
+
+- frecuencia_envios: "Diaria", "Semanal", "Mensual".
+- demanda_promedio: Promedio de productos enviados.
+- costo_envio: Costo total del envío.
+- tiempo_entrega: Días estimados para la entrega.
+- prioridad: "Alta", "Media", "Baja".
+
+7. OPERA_EN (Proveedor → Almacen)
+
+- inicio_operaciones: Fecha de inicio de operaciones.
+- capacidad_utilizada: Porcentaje de uso del almacén.
+- contrato_vigente: true o false.
+- costo_operacion: Gasto mensual en operaciones.
+- evaluacion_calidad: Puntaje de calidad de servicio (0-100).
+
+8. COMPRA (Cliente → Producto)
+
+- cantidad: Cantidad comprada.
+- precio_total: Precio total de la compra.
+- fecha_compra: Fecha en que se realizó la compra.
+- descuento_aplicado: Porcentaje de descuento.
+- metodo_pago: "Tarjeta", "Efectivo", "Transferencia".
+
+9. GESTIONA (Inventario → Producto)
+
+- cantidad_disponible: Número de unidades en inventario.
+- fecha_actualizacion: Última fecha de actualización.
+- costo_mantenimiento: Costo de almacenamiento mensual.
+- riesgo_caducidad: Nivel de riesgo de vencimiento (0-100).
+- nivel_rotacion: "Alta", "Media", "Baja" (velocidad de salida del producto).
+
+10. ENTREGA_A (Transporte → Cliente)
+
+- tipo_transporte: "Camión", "Barco", "Dron".
+- carga_utilizada: Capacidad usada en kg.
+- tiempo_entrega: Horas estimadas.
+- costo_total: Costo del servicio.
+- estado: "En ruta", "Entregado", "Retrasado".
