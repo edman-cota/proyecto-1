@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
-import ProveedoresModal from './Modals/ProveedoresModal';
+import RelacionesModal from './Modals/RelacionesModal';
 import { MdDelete } from 'react-icons/md';
-import AlmacenesModal from './Modals/AlmacenesModal';
 
-const Almacenes = () => {
+const Relaciones = () => {
   const [nodes, setNodes] = useState([]);
 
-  const fetchNodes = () => {
-    api.get('/nodos/almacenes').then((res) => setNodes(res.data));
-  };
-
-  const deleteNode = async (id) => {
-    await api.delete(`/nodos/almacen/${id}`);
-
-    fetchNodes();
+  const fetchData = () => {
+    api.get('/relaciones').then((res) => setNodes(res.data));
   };
 
   useEffect(() => {
-    fetchNodes();
+    fetchData();
   }, []);
 
   return (
     <main>
-      <div className='navbar'></div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <h2>Relaciones</h2>
 
-      <div className='header'>
-        <h2>Almacenes</h2>
-
-        <AlmacenesModal fetchProveedores={fetchNodes} />
+        <RelacionesModal />
       </div>
 
       <div className='card'>
@@ -37,9 +28,11 @@ const Almacenes = () => {
             <tr>
               <th>Id</th>
               <th>Nombre</th>
-              <th>Capacidad</th>
-              <th>Inventario actual</th>
-              <th>Ubicacion</th>
+              <th>Ubicación</th>
+              <th>Demanda mensual</th>
+              <th>Frecuencia de pedidos</th>
+              <th>Nivel de prioridad</th>
+              <th>Tipo</th>
               <th>Estado</th>
               <th>Eliminar</th>
             </tr>
@@ -49,9 +42,11 @@ const Almacenes = () => {
               <tr>
                 <td>{node.id}</td>
                 <td>{node.nombre}</td>
-                <td>{node.capacidad}</td>
-                <td>{node.inventario_actual}</td>
                 <td>{node.ubicacion}</td>
+                <td>{node.demanda_mensual}</td>
+                <td>{node.frecuencia_pedidos}</td>
+                <td>{node.nivel_prioridad}</td>
+                <td>{node.tipo_cliente}</td>
                 <td>{node.activo ? 'Activo' : 'Inactivo'}</td>
 
                 <td>
@@ -68,4 +63,4 @@ const Almacenes = () => {
   );
 };
 
-export default Almacenes;
+export default Relaciones;

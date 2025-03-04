@@ -10,6 +10,7 @@ const ClientesModal = ({ fetchProveedores }) => {
   const [demanda, setDemanda] = useState(0);
   const [frecuencia, setFrecuencia] = useState('Semanal');
   const [prioridad, setPrioridad] = useState('Alta');
+  const [tipo, setTipo] = useState('Tienda');
 
   const createNode = async () => {
     const label = 'Cliente';
@@ -22,6 +23,7 @@ const ClientesModal = ({ fetchProveedores }) => {
       demanda_mensual: +demanda,
       frecuencia_pedidos: frecuencia,
       nivel_prioridad: prioridad,
+      tipo_cliente: tipo,
       activo: true,
     };
 
@@ -61,15 +63,31 @@ const ClientesModal = ({ fetchProveedores }) => {
 
           <div style={{ display: 'flex' }}>
             <label style={{ width: 200 }}>Frecuencia de pedidos</label>
-            <input
-              placeholder='Frecuencia de pedidos'
-              onChange={(event) => setFrecuencia(event.target.value)}
-            />
+
+            <select name='frecuencia' id='frecuencia' onChange={(event) => setFrecuencia(event.target.value)}>
+              <option value='Diaria'>Diaria</option>
+              <option value='Semanal'>Semanal</option>
+              <option value='Mensual'>Mensual</option>
+            </select>
           </div>
 
           <div style={{ display: 'flex' }}>
             <label style={{ width: 200 }}>Nivel de prioridad</label>
-            <input placeholder='Nivel de prioridad' onChange={(event) => setPrioridad(event.target.value)} />
+
+            <select name='prioridad' id='prioridad' onChange={(event) => setPrioridad(event.target.value)}>
+              <option value='Alta'>Alta</option>
+              <option value='Media'>Media</option>
+              <option value='Baja'>Baja</option>
+            </select>
+          </div>
+
+          <div style={{ display: 'flex' }}>
+            <label style={{ width: 200 }}>Tipo de cliente</label>
+
+            <select name='clientes' id='clientes' onChange={(event) => setTipo(event.target.value)}>
+              <option value='Tienda'>Tienda</option>
+              <option value='Consumidor Final'>Consumidor Final</option>
+            </select>
           </div>
 
           <div

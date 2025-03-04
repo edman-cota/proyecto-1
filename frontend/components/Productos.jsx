@@ -21,41 +21,45 @@ const Productos = () => {
   }, []);
 
   return (
-    <main style={{ width: '100%', marginTop: 40, padding: 16 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <main>
+      <div className='navbar'></div>
+
+      <div className='header'>
         <h2>Productos</h2>
 
         <ProductosModal fetchProveedores={fetchProductos} />
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {nodes.map((node) => (
+      <div className='card'>
+        <table>
+          <thead>
             <tr>
-              <td>{node.id}</td>
-              <td>{node.nombre}</td>
-              <td>{node.categoría}</td>
-              <td>{node.precio}</td>
-              <td>{node.stock}</td>
-              <td>
-                <button title='Eliminar' className='deleteButton' onClick={() => deleteProducto(node.id)}>
-                  <MdDelete />
-                </button>
-              </td>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Eliminar</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {nodes.map((node) => (
+              <tr>
+                <td>{node.id}</td>
+                <td>{node.nombre}</td>
+                <td>{node.categoría}</td>
+                <td>{node.precio}</td>
+                <td>{node.stock}</td>
+                <td>
+                  <button title='Eliminar' className='deleteButton' onClick={() => deleteProducto(node.id)}>
+                    <MdDelete />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </main>
   );
 };

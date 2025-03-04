@@ -84,3 +84,13 @@ Propiedades de los nodos:
 - frecuencia_pedidos: "Diaria", "Semanal" o "Mensual".
 - nivel_prioridad: "Alta", "Media" o "Baja".
 - tipo_cliente: "Tienda" o "Consumidor Final".
+
+RELACIONES
+
+1. CONDUCE_A
+
+- distancia: La distancia en kilómetros entre los nodos.
+- costo: El costo de transporte entre los nodos.
+- tiempo_transito: El tiempo estimado en horas del traslado.
+- capacidad_maxima: La cantidad máxima de carga en kg que puede llevarse en el trayecto.
+- modo_transporte: Tipo de transporte utilizado (Ej: "Camión", "Barco", "Avión").

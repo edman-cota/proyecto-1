@@ -38,28 +38,33 @@ const AlmacenesModal = ({ fetchProveedores }) => {
       <Dialog.Portal>
         <Dialog.Overlay className='DialogOverlay' />
         <Dialog.Content className='DialogContent'>
-          <Dialog.Title className='DialogTitle'>Crear nuevo orden</Dialog.Title>
+          <Dialog.Title className='DialogTitle'>Crear nuevo almacen</Dialog.Title>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 40 }}>
-            <div style={{ display: 'flex' }}>
-              <label style={{ width: 200 }}>Nombre</label>
-              <input placeholder='Nombre' onChange={(event) => setNombre(event.target.value)} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 40 }}>
+              <div style={{ display: 'flex' }}>
+                <label style={{ width: 200 }}>Nombre</label>
+                <input placeholder='Nombre' onChange={(event) => setNombre(event.target.value)} />
+              </div>
             </div>
-          </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Ubicación</label>
-            <input placeholder='Ubicación' onChange={(event) => setUnbicacion(event.target.value)} />
-          </div>
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Ubicación</label>
+              <input placeholder='Ubicación' onChange={(event) => setUnbicacion(event.target.value)} />
+            </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Capacidad</label>
-            <input placeholder='Capacidad' onChange={(event) => setCapacidad(event.target.value)} />
-          </div>
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Capacidad de inventario</label>
+              <input
+                placeholder='Capacidad de inventario'
+                onChange={(event) => setCapacidad(event.target.value)}
+              />
+            </div>
 
-          <div style={{ display: 'flex' }}>
-            <label style={{ width: 200 }}>Inventario</label>
-            <input placeholder='Inventario' onChange={(event) => setInventario(event.target.value)} />
+            <div style={{ display: 'flex' }}>
+              <label style={{ width: 200 }}>Inventario actual</label>
+              <input placeholder='Inventario' onChange={(event) => setInventario(event.target.value)} />
+            </div>
           </div>
 
           <div

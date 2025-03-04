@@ -8,6 +8,7 @@ import Inventarios from '../components/Inventarios';
 import Transportes from '../components/Transportes';
 import Almacenes from '../components/Almancenes';
 import Clientes from '../components/Clientes';
+import Relaciones from '../components/Relaciones';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path='ordenes' element={<Ordenes />} />
         <Route path='inventarios' element={<Inventarios />} />
         <Route path='transportes' element={<Transportes />} />
+
+        <Route path='relaciones' element={<Relaciones />} />
       </Routes>
     </div>
   );
