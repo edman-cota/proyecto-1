@@ -13,6 +13,7 @@ import SUMINISTRA from '../components/SUMINISTRA';
 import REALIZA from '../components/REALIZA';
 import ALMACENA from '../components/ALMACENA';
 import TRANSPORTA from '../components/TRANSPORTA';
+import Optimized from '../components/Optimized';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
         <Route path='REALIZA' element={<REALIZA />} />
         <Route path='ALMACENA' element={<ALMACENA />} />
         <Route path='TRANSPORTA' element={<TRANSPORTA />} />
+
+        <Route path='optimized' element={<Optimized />} />
       </Routes>
     </div>
   );

@@ -72,7 +72,7 @@ const TRANSPORTAModal = ({ fetchData }) => {
                   <label>{fromLabel}</label>
                   <select value={fromId} onChange={(e) => setFromId(+e.target.value)}>
                     {transportes.map((label) => (
-                      <option value={label.id}>{label.nombre}</option>
+                      <option value={label.id}>{label.nombre || label.tipo}</option>
                     ))}
                   </select>
                 </div>

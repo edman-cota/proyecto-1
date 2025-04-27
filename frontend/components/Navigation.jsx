@@ -67,6 +67,11 @@ const Navigation = () => {
         <FiLink />
         TRANSPORTA
       </Link>
+
+      <Link to='/optimized' style={{ color: 'white' }}>
+        <FiLink />
+        Optimización
+      </Link>
     </nav>
   );
 };

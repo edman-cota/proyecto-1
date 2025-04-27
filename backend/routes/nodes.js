@@ -17,11 +17,18 @@ const {
   deleteAlmacen,
   deleteCliente,
   getClientes,
+  getOptimizedRoute,
+  getOverloadedWarehouses,
+  getAvailableTransport,
 } = require('../controllers/nodesController');
 const router = express.Router();
 
 router.post('/', createNode);
 router.get('/', getNodes);
+
+router.post('/optimized', getOptimizedRoute);
+router.get('/overloaded', getOverloadedWarehouses);
+router.post('/available', getAvailableTransport);
 
 router.post('/proveedor', createSingleNode);
 router.get('/proveedores', getProveedores);

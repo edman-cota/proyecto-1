@@ -47,7 +47,8 @@ const ALMACENA = () => {
                 <td>{node.temperatura_requerida}</td>
                 <td>{node.costo_mantenimiento}</td>
                 <td>{node.dias_permitidos}</td>
-                <td>{node.fecha_ingreso}</td>
+                {/* <td>{node.fecha_ingreso}</td> */}
+                <td></td>
               </tr>
             ))}
           </tbody>

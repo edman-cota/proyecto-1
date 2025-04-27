@@ -311,3 +311,94 @@ exports.deleteTransporte = async (req, res) => {
     await session.close();
   }
 };
+
+exports.getOptimizedRoute = async (req, res) => {
+  const { startLabel, startName, endLabel, endName, criteria } = req.body; // `criteria` puede ser "costo", "tiempo_transito", "distancia"
+  const session = driver.session();
+
+  try {
+    const query = `
+      MATCH (start:${startLabel} {nombre: $startName}), (end:${endLabel} {nombre: $endName})
+      CALL gds.shortestPath.dijkstra.stream({
+        nodeProjection: '*',
+        relationshipProjection: {
+          RELACION: { type: '*', properties: $criteria }
+        },
+        startNode: start,
+        endNode: end
+      })
+      YIELD index, sourceNode, targetNode, totalCost
+      MATCH (n) WHERE id(n) = targetNode
+      RETURN n.nombre AS name, labels(n) AS type, totalCost
+    `;
+
+    const result = await session.run(query, { startName, endName, criteria });
+
+    const route = result.records.map((record) => ({
+      name: record.get('name'),
+      type: record.get('type')[0], // Tomamos el primer label
+      cost: record.get('totalCost'),
+    }));
+
+    res.json({ optimizedRoute: route });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
+  }
+};
+
+exports.getOverloadedWarehouses = async (req, res) => {
+  const session = driver.session();
+
+  try {
+    const query = `
+      MATCH (a:Almacen)
+      WHERE a.inventario_actual > a.capacidad
+      RETURN a.nombre AS nombre, a.ubicacion AS ubicacion, a.inventario_actual AS inventario, a.capacidad AS capacidad
+    `;
+
+    const result = await session.run(query);
+
+    const almacenes = result.records.map((record) => ({
+      nombre: record.get('nombre'),
+      ubicacion: record.get('ubicacion'),
+      inventario: record.get('inventario'),
+      capacidad: record.get('capacidad'),
+    }));
+
+    res.json({ overloadedWarehouses: almacenes });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
+  }
+};
+
+exports.getAvailableTransport = async (req, res) => {
+  const { minCapacity } = req.body; // Capacidad mínima requerida
+  const session = driver.session();
+
+  try {
+    const query = `
+      MATCH (t:Transporte)
+      WHERE t.capacidad >= $minCapacity AND t.activo = true
+      RETURN t.id AS id, t.tipo AS tipo, t.capacidad AS capacidad, t.costo AS costo
+    `;
+
+    const result = await session.run(query, { minCapacity });
+
+    const transportes = result.records.map((record) => ({
+      id: toInteger(record.get('id')),
+      tipo: toInteger(record.get('tipo')),
+      capacidad: toInteger(record.get('capacidad')),
+      costo: toInteger(record.get('costo')),
+    }));
+
+    res.json({ transportes });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  } finally {
+    await session.close();
+  }
+};

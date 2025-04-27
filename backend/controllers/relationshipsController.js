@@ -1,5 +1,12 @@
 const driver = require('../config/neo4j');
 
+const toInteger = (value) => {
+  if (value && value.low !== undefined && value.high !== undefined) {
+    return value.low + value.high * Math.pow(2, 32);
+  }
+  return value;
+};
+
 exports.createRelationship = async (req, res) => {
   const { fromId, fromLabel, toId, toLabel, relationshipType, properties } = req.body;
 
@@ -44,12 +51,20 @@ exports.getRelationships = async (req, res) => {
              endNode(r).nombre AS endName
     `);
 
-    const relationships = result.records.map((record) => ({
-      ...record.get('properties'),
-      type: record.get('type'),
-      startName: record.get('startName'), // Nombre del nodo de inicio
-      endName: record.get('endName'), // Nombre del nodo final
-    }));
+    const relationships = result.records.map((record) => {
+      const node = record.get('properties');
+
+      Object.keys(node).forEach((key) => {
+        node[key] = toInteger(node[key]);
+      });
+
+      return {
+        ...node,
+        type: record.get('type'),
+        startName: record.get('startName'), // Nombre del nodo de inicio
+        endName: record.get('endName'), // Nombre del nodo final
+      };
+    });
 
     res.json(relationships);
   } catch (error) {
